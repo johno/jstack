@@ -91,6 +91,18 @@ description: What the skill does and when to use it.
 
 Keep the body procedural, concise, and self-contained. Prefer evidence and concrete verification over elaborate process.
 
+## Development
+
+Check every skill's metadata and scan for obvious portability regressions:
+
+```sh
+scripts/check-skills.sh
+```
+
+The script needs only a POSIX shell, `sed`, `awk`, and `grep`. It verifies that each `skills/<name>/SKILL.md` has closed frontmatter with only portable keys, a `name` that matches its directory, a `description` that says when to use the skill, and a non-empty body. It also flags harness-, tracker-, host-, model-, and project-specific terms such as `$ARGUMENTS`, MCP function names, `gh` commands, and `make` targets.
+
+A flagged term is a prompt to fix the wording, not to add an exception. Move concrete policy into the consuming repository's instructions.
+
 ## Design principle
 
 jstack should teach behavior, not provide orchestration.
