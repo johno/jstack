@@ -17,24 +17,27 @@ That's the stack.
 
 ## Philosophy
 
-jstack describes **what good work looks like**, not how your agent harness happens to do it.
+jstack describes **what good work looks like**, while your repo defines the tools and conventions used to get there.
 
-Your repo owns the details:
+Your repo still owns the details: how you track work, which commands to run, how branches and PRs are managed, what needs to pass before something ships. jstack is meant to sit one level above that and describe the workflow without coupling it to any of those choices.
 
-- commands
-- issue tracking
-- branching
-- testing
-- review
-- merging
+The same `pickup` skill should be useful in a repo using Linear, Bun, and stacked PRs as it is in one using GitHub Issues, pnpm, and a single branch. There shouldn't need to be separate Claude, Codex, or Cursor versions either.
 
-jstack owns the workflow.
+The skills are intentionally just Markdown. If jstack starts needing a router, runtime, model selection, or its own orchestration layer, we've probably gone too far.
 
-That means the same skill should work whether a repo uses Linear or GitHub Issues, Bun or pnpm, stacked PRs or a single branch.
+## Install
 
-No router. No model selection. No runtime. No swarm.
+Install the stack:
 
-Just Markdown.
+```sh
+npx skills add johno/jstack
+```
+
+Or grab just the skills you want:
+
+```sh
+npx skills add johno/jstack --skill review
+```
 
 ## Structure
 
@@ -48,17 +51,17 @@ skills/
   cleanup/SKILL.md
 ```
 
-Use all of them or copy the ones you want.
+Each skill is standalone, so there's nothing special about using the whole set together.
 
 ## Development
 
-Check the skills:
+Run the checks with:
 
 ```sh
 scripts/check-skills.sh
 ```
 
-The check validates the basic Agent Skills format and catches obvious harness-specific assumptions sneaking into the portable skills.
+This validates the basic Agent Skills structure and catches some of the easy ways harness- or repo-specific assumptions can sneak into the skills.
 
 ## License
 
