@@ -17,13 +17,13 @@ That's the stack.
 
 ## Philosophy
 
-jstack describes **what good work looks like**, while your repo defines the tools and conventions used to get there.
+jstack describes **what good work looks like**, while your repo defines how that work gets done.
 
-Your repo still owns the details: how you track work, which commands to run, how branches and PRs are managed, what needs to pass before something ships. jstack is meant to sit one level above that and describe the workflow without coupling it to any of those choices.
+Your repo owns the details: how work is tracked, which commands to run, how branches and PRs are managed, and what needs to pass before something ships. jstack defines the workflow around those choices without depending on any of them.
 
-The same `pickup` skill should be useful in a repo using Linear, Bun, and stacked PRs as it is in one using GitHub Issues, pnpm, and a single branch. There shouldn't need to be separate Claude, Codex, or Cursor versions either.
+The same `pickup` skill should work in a repo using Linear, Bun, and stacked PRs as it does in one using GitHub Issues, pnpm, and a single branch. There shouldn't need to be separate Claude, Codex, or Cursor versions.
 
-The skills are intentionally just Markdown. If jstack starts needing a router, runtime, model selection, or its own orchestration layer, we've probably gone too far.
+The skills are plain Markdown and meant to stay portable. If jstack starts needing its own runtime, router, model selection, or orchestration layer, it's probably solving the wrong problem.
 
 ## Install
 
@@ -33,7 +33,7 @@ Install the stack:
 npx skills add johno/jstack
 ```
 
-Or grab just the skills you want:
+Or grab an individual skill:
 
 ```sh
 npx skills add johno/jstack --skill review
@@ -51,7 +51,7 @@ skills/
   cleanup/SKILL.md
 ```
 
-Each skill is standalone, so there's nothing special about using the whole set together.
+Each skill stands on its own, so you can use the whole stack or only the pieces that fit your workflow.
 
 ## Development
 
@@ -61,7 +61,7 @@ Run the checks with:
 scripts/check-skills.sh
 ```
 
-This validates the basic Agent Skills structure and catches some of the easy ways harness- or repo-specific assumptions can sneak into the skills.
+This validates the Agent Skills structure and flags obvious repo- or harness-specific assumptions that have leaked into the portable skills.
 
 ## License
 
