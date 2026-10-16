@@ -17,6 +17,7 @@ When available, check:
 
 - the work item and its latest comments
 - current branch or change state
+- who currently owns the work, including any other session or person actively using the same branch or checkout
 - modified files and final diff
 - test, build, and review status
 - unresolved errors or blockers

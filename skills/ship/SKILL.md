@@ -26,7 +26,7 @@ Check the repository's required evidence for the exact revision that will land.
 
 When applicable, verify:
 
-- required automated checks are passing
+- the automated checks the repository expects for this change are passing
 - relevant tests cover the changed behavior
 - static analysis and build checks pass
 - migrations, generated artifacts, or deployment prerequisites are accounted for
@@ -35,7 +35,7 @@ When applicable, verify:
 - no requested changes or known release blockers remain
 - documentation and compatibility notes required by the change are present
 
-If hosted checks could not run for an infrastructure reason, use a documented local equivalent only when repository policy permits it, and record what was actually run.
+If hosted checks could not run for an infrastructure reason, use a documented local equivalent only when repository policy permits it, and record what was actually run on the reviewable change.
 
 Never reinterpret a real failing check as an infrastructure failure just to unblock shipping.
 
@@ -57,7 +57,9 @@ Do not block shipping for unrelated cleanup, hypothetical perfection, or review 
 
 Use the repository's documented merge or shipping mechanism.
 
-Do not invent a merge strategy, rewrite shared history, bypass branch protection, skip required approvals, or disable checks to force the change through.
+If repository policy reserves landing for a person or another process, stop at a ready verdict and report the exact state instead of landing.
+
+Do not invent a merge strategy, rewrite shared history beyond what repository policy allows, bypass branch protection, skip required approvals, or disable checks to force the change through.
 
 For a set of dependent changes, preserve the repository's intended order and atomicity guarantees.
 
@@ -67,7 +69,9 @@ If the shipping mechanism rejects the change, stop and fix the cause rather than
 
 After the change has actually landed:
 
-- verify the source host or repository reports it as landed
+- verify the repository reports it as landed
+- confirm the destination branch is still healthy when the repository has checks for it
+- distinguish integrating a change from releasing it, and report which boundary was crossed and what promotion remains
 - update the associated work item according to repository policy
 - close only the work that is truly complete
 - record any intentionally deferred follow-up in the normal tracker when available

@@ -15,7 +15,7 @@ Before writing the work item:
 
 - Understand the desired outcome and why it matters.
 - Inspect the relevant code, tests, documentation, configuration, or runtime behavior when available.
-- Search for existing work that may already cover the same problem.
+- Search for existing work that may already cover the same problem. Make sure the available tracker is the one this repository actually uses, for example by checking that its identifiers match those the repository references.
 - For a bug, capture the observed behavior, expected behavior, reproduction path, and exact errors when they are available.
 - Distinguish facts you verified from assumptions or proposed implementation.
 
@@ -55,7 +55,9 @@ Include reproduction or verification steps when they materially reduce ambiguity
 
 ## 4. Create or return the work item
 
-If an issue-tracking capability is configured for the repository, create or update the work item there and preserve the repository's normal metadata conventions.
+If an issue-tracking capability is configured for the repository, create or update the work item there and preserve the repository's normal metadata conventions. Link related or blocking work when it exists.
+
+New work items often notify people. Unless repository instructions say to file directly, confirm the title and placement with the user before creating one. After creating it, check that the saved fields match what you intended.
 
 If no tracker is available, return issue-ready Markdown that can be pasted into one.
 
