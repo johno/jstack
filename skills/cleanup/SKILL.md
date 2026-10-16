@@ -19,7 +19,7 @@ Inventory relevant:
 - remote branches when visible
 - worktrees or equivalent secondary checkouts
 - open reviewable changes associated with those branches
-- uncommitted and untracked changes
+- uncommitted, untracked, and stashed or shelved changes
 
 Never treat stale local metadata as proof that work landed.
 
@@ -29,9 +29,9 @@ A branch or checkout is a cleanup candidate only when you can establish that its
 
 Acceptable evidence can include:
 
-- the associated reviewable change is recorded as merged or landed
+- the associated reviewable change is recorded as landed in the destination branch, or in a parent change that itself landed, and the branch contains nothing beyond what that change landed
 - all unique commits or changes are demonstrably present in the destination branch
-- repository-specific stack/fold behavior proves the work was incorporated
+- repository tooling that records how dependent changes were combined proves the work was incorporated
 - the user explicitly identifies the work as abandoned and asks to remove it
 
 Do not rely only on a simple ancestor check when the repository's merge strategy can rewrite commits.
@@ -44,6 +44,7 @@ Never remove:
 
 - the repository's primary branch
 - the branch or checkout the current session is actively using
+- a checkout that is locked or in use by another session, person, or tool
 - a checkout with uncommitted or untracked work
 - a branch with an open reviewable change
 - a branch with unique work that is not proven to have landed
@@ -54,7 +55,9 @@ A newly created branch with no work is not automatically “merged”. Treat emp
 
 ## 4. Remove in a safe order
 
-When cleanup has been explicitly requested and the candidates are proven safe:
+When cleanup has been explicitly requested and the candidates are proven safe, show what will be removed and what will be kept. Confirm with the user before deleting anything the request did not name.
+
+Then:
 
 1. remove secondary checkouts or worktrees first
 2. remove their local branches

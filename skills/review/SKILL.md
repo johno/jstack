@@ -37,6 +37,8 @@ Look for concrete problems in areas such as:
 - missing verification for material behavior
 - architectural duplication that creates a real maintenance or correctness problem
 
+Treat findings from other reviewers or automated tools the same way: they are candidates, not findings.
+
 A candidate is not yet a finding.
 
 ## 3. Try to disprove every candidate
@@ -93,5 +95,7 @@ If a concern is uncertain, investigate it. Do not disguise uncertainty with a se
 ## 6. Conclude cleanly
 
 If no candidate survives verification, say that there are no material findings.
+
+If you noticed a material pre-existing problem outside this change, mention it separately as possible follow-up work, not as a finding against the change.
 
 A short clean review is a successful outcome.

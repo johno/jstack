@@ -7,14 +7,15 @@ description: Implement an existing work item from context gathering through a ve
 
 Implement the referenced work item and leave the change merge-ready.
 
-Do not merge or land the change as part of this skill unless the user explicitly asks for that separately. Respect repository-local instructions for branching, issue tracking, verification, review, and pull requests.
+Do not merge or land the change as part of this skill unless the user explicitly asks for that separately. Respect repository-local instructions for branching, issue tracking, verification, review, and reviewable changes.
 
 ## 1. Reconstruct the work
 
 Read the work item and the context around it before changing code.
 
 - Read its description, comments, related work, blockers, and sub-tasks when available.
-- Read repository instructions and the code, tests, documentation, and configuration the change touches.
+- Refresh source-control state, then read repository instructions from the branch the change will target. A local checkout can be stale.
+- Read the code, tests, documentation, and configuration the change touches.
 - Reconcile the work item with the current repository state. Tickets can be stale.
 - Identify the user-visible or system-visible outcome the work is actually trying to produce.
 - Preserve explicit constraints, but do not blindly preserve implementation suggestions that no longer fit the code.
@@ -29,7 +30,7 @@ Form a short implementation plan grounded in the code you inspected.
 - Keep unrelated refactors and cleanup out of scope.
 - Split work only when the pieces are independently understandable and reviewable.
 - Follow the repository's existing branch or stacked-change conventions rather than imposing one.
-- Identify the verification that will prove the change works before implementation begins.
+- Identify the verification that will prove the change works before implementation begins, and note any checks that already fail so they are not misattributed to the change.
 
 Update the work item with material discoveries when an issue-tracking capability is available and repository policy expects it.
 
@@ -48,6 +49,8 @@ When the current design makes the requested change awkward, fix the relevant des
 ## 4. Verify
 
 Run the narrowest useful checks first, then the repository's documented broader verification before declaring the change ready.
+
+Confirm the checks actually exercise the changed code. A repository-wide command or a passing hosted check may not cover every part of the repository.
 
 Verification should normally include, when applicable:
 
@@ -72,7 +75,9 @@ The review context should make clear:
 - how it was verified
 - any intentionally deferred work or known limitation
 
-Use the repository's configured review process when one exists. Address substantiated findings with code or evidence. Do not expand the change for speculative, stylistic, or unrelated review suggestions.
+Use the repository's configured review process when one exists. If it cannot run, perform an equivalent review and record which revision it covered.
+
+Address substantiated findings with code or evidence. Fixes made in response to review need review too: repeat until the review of the current revision has no unaddressed material findings. Do not expand the change for speculative, stylistic, or unrelated review suggestions. Capture valid suggestions that are out of scope as separate work items when repository policy supports it.
 
 Keep the work item current and link the change when repository policy expects it.
 
