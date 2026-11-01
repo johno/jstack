@@ -9,6 +9,7 @@ jstack is a small collection of portable [Agent Skills](https://agentskills.io/)
 - **ticket** — turn an idea into something another agent can pick up
 - **pickup** — understand the work, implement it, verify it, get it review-ready
 - **review** — find real problems without inventing fake ones
+- **improve** — find and fix one worthwhile source of maintenance friction
 - **ship** — make sure the work is ready, then land it
 - **handoff** — leave enough context for someone else to keep going
 - **cleanup** — clean up branches and worktrees without deleting anything important
@@ -46,6 +47,7 @@ skills/
   ticket/SKILL.md
   pickup/SKILL.md
   review/SKILL.md
+  improve/SKILL.md
   ship/SKILL.md
   handoff/SKILL.md
   cleanup/SKILL.md
